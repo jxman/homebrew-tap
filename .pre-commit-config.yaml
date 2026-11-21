@@ -1,0 +1,30 @@
+# Pre-commit hooks for jxman/tap: install with `pre-commit install --hook-type pre-commit --hook-type commit-msg`
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-merge-conflict
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-yaml
+
+  - repo: local
+    hooks:
+      # Homebrew's own RuboCop rules for casks (what `brew audit` and Homebrew CI enforce)
+      - id: brew-style
+        name: brew style
+        entry: brew style --fix
+        language: system
+        files: ^Casks/.*\.rb$
+      - id: ggshield
+        name: ggshield - secret scan
+        entry: ggshield secret scan pre-commit
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v4.4.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
