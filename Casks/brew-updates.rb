@@ -1,6 +1,6 @@
 cask "brew-updates" do
-  version "1.7.1"
-  sha256 "31ba8fcb00192828bd5d360298197c6b632ac3c97f0d45cd8bcd3bd349c85961"
+  version "1.8.0"
+  sha256 "2df68263468bb3a036f78d8efe383258988e8ce3751e05a8250d6aa2bce763ef"
 
   url "https://github.com/jxman/brew-updates/releases/download/app-v#{version}/Brew-Updates-#{version}.dmg"
   name "Brew Updates"
